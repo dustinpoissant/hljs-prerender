@@ -8,6 +8,25 @@
   <link rel="stylesheet" href="./essential.min.css" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
   <style>.hljs{display:block;overflow-x:auto;padding:.5em;background:white;color:black}.hljs-comment,.hljs-quote,.hljs-variable{color:#008000}.hljs-keyword,.hljs-selector-tag,.hljs-built_in,.hljs-name,.hljs-tag{color:#00f}.hljs-string,.hljs-title,.hljs-section,.hljs-attribute,.hljs-literal,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-addition{color:#a31515}.hljs-deletion,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-meta{color:#2b91af}.hljs-doctag{color:#808080}.hljs-attr{color:#f00}.hljs-symbol,.hljs-bullet,.hljs-link{color:#00b0e8}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}</style>
+  <style>
+    .theme-code {
+      min-height: 1px;
+      height: 1px;
+      opacity: 0;
+      margin: -1rem 0;
+      padding: 0;
+    }
+    .theme-code:focus {
+      box-shadow: 0 0 0 transparent;
+    }
+    iframe {
+      width: 100%;
+      height: 145px;
+      border: none;
+      margin: 0 0 1rem 0;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
   <h1 class="text-center py">Highlight JS Pre-Renderer</h1>
@@ -53,15 +72,56 @@
           <button class="primary full">Render</button>
         </form>
       </div>
-      <div class="d-col-6 t-col-6 m-col-12 px">
+      <div class="d-col-6 t-col-6 m-col-12 px mb">
         <h3>Output Markup</h3>
         <textarea id="output-code" readonly placeholder='Enter code in input box and click "Render" to see the output here.'></textarea>
-        <button id="output-copy" class="full">Copy to Clipboard</button>
-        <p id="output-copy-success" class="success text-ligh p radius" style="display: none">Copied to Clipboard</p>
+        <button class="copy full -mt" data-target="output-code">Copy Output To Clipboard</button>
         <h3>Preview</h3>
         <div id="output-preview"></div>
       </div>
     </div>
+
+    <hr />
+    
+    <main style="max-width: 48rem">
+        <h3 class="py border-bottom">Common Themes</h3>
+        <p><a href="https://highlightjs.org/static/demo/" target="_blank">View All Themes</a></p>
+        <h5>Default</h5>
+        <iframe src="./theme-previews/default.html" class="-mt"></iframe>
+        <textarea id="theme-default" readonly class="theme-code">&lt;style>.hljs{display:block;overflow-x:auto;padding:.5em;background:#F0F0F0}.hljs,.hljs-subst{color:#444}.hljs-comment{color:#888888}.hljs-keyword,.hljs-attribute,.hljs-selector-tag,.hljs-meta-keyword,.hljs-doctag,.hljs-name{font-weight:bold}.hljs-type,.hljs-string,.hljs-number,.hljs-selector-id,.hljs-selector-class,.hljs-quote,.hljs-template-tag,.hljs-deletion{color:#880000}.hljs-title,.hljs-section{color:#880000;font-weight:bold}.hljs-regexp,.hljs-symbol,.hljs-variable,.hljs-template-variable,.hljs-link,.hljs-selector-attr,.hljs-selector-pseudo{color:#BC6060}.hljs-literal{color:#78A960}.hljs-built_in,.hljs-bullet,.hljs-code,.hljs-addition{color:#397300}.hljs-meta{color:#1f7199}.hljs-meta-string{color:#4d99bf}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}&lt;/style></textarea>
+        <button class="copy full -mt" data-target="theme-default">Copy "Default" Theme Style Tag To Clipboard</button>
+    
+        <h5 class="mt pt">VS Code</h5>
+        <iframe src="./theme-previews/vscode.html" class="-mt"></iframe>
+        <textarea id="theme-vscode" readonly class="theme-code">&lt;style>.hljs{display:block;overflow-x:auto;padding:.5em;background:white;color:black}.hljs-comment,.hljs-quote,.hljs-variable{color:#008000}.hljs-keyword,.hljs-selector-tag,.hljs-built_in,.hljs-name,.hljs-tag{color:#00f}.hljs-string,.hljs-title,.hljs-section,.hljs-attribute,.hljs-literal,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-addition{color:#a31515}.hljs-deletion,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-meta{color:#2b91af}.hljs-doctag{color:#808080}.hljs-attr{color:#f00}.hljs-symbol,.hljs-bullet,.hljs-link{color:#00b0e8}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}&lt;/style></textarea>
+        <button class="copy full -mt" data-target="theme-vscode">Copy "VS Code" Theme Style Tag To Clipboard</button>
+    
+        <h5 class="mt pt">VS Code Dark</h5>
+        <iframe src="./theme-previews/vscode-dark.html" class="-mt"></iframe>
+        <textarea id="theme-vscode-dark" readonly class="theme-code">&lt;style>.hljs{display:block;overflow-x:auto;padding:.5em;background:#1E1E1E;color:#DCDCDC}.hljs-keyword,.hljs-literal,.hljs-symbol,.hljs-name{color:#569CD6}.hljs-link{color:#569CD6;text-decoration:underline}.hljs-built_in,.hljs-type{color:#4EC9B0}.hljs-number,.hljs-class{color:#B8D7A3}.hljs-string,.hljs-meta-string{color:#D69D85}.hljs-regexp,.hljs-template-tag{color:#9A5334}.hljs-subst,.hljs-function,.hljs-title,.hljs-params,.hljs-formula{color:#DCDCDC}.hljs-comment,.hljs-quote{color:#57A64A;font-style:italic}.hljs-doctag{color:#608B4E}.hljs-meta,.hljs-meta-keyword,.hljs-tag{color:#9B9B9B}.hljs-variable,.hljs-template-variable{color:#BD63C5}.hljs-attr,.hljs-attribute,.hljs-builtin-name{color:#9CDCFE}.hljs-section{color:gold}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-bullet,.hljs-selector-tag,.hljs-selector-id,.hljs-selector-class,.hljs-selector-attr,.hljs-selector-pseudo{color:#D7BA7D}.hljs-addition{background-color:#144212;display:inline-block;width:100%}.hljs-deletion{background-color:#600;display:inline-block;width:100%}&lt;/style></textarea>
+        <button class="copy full -mt" data-target="theme-vscode-dark">Copy "VS Code Dark" Theme Style Tag To Clipboard</button>
+        
+        <h5 class="mt pt">GitHub</h5>
+        <iframe src="./theme-previews/github.html" class="-mt"></iframe>
+        <textarea id="theme-github" readonly class="theme-code">&lt;style>.hljs{display:block;overflow-x:auto;padding:.5em;color:#333;background:#f8f8f8}.hljs-comment,.hljs-quote{color:#998;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:bold}.hljs-number,.hljs-literal,.hljs-variable,.hljs-template-variable,.hljs-tag .hljs-attr{color:#008080}.hljs-string,.hljs-doctag{color:#d14}.hljs-title,.hljs-section,.hljs-selector-id{color:#900;font-weight:bold}.hljs-subst{font-weight:normal}.hljs-type,.hljs-class .hljs-title{color:#458;font-weight:bold}.hljs-tag,.hljs-name,.hljs-attribute{color:#000080;font-weight:normal}.hljs-regexp,.hljs-link{color:#009926}.hljs-symbol,.hljs-bullet{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:bold}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}&lt;/style></textarea>
+        <button class="copy full -mt" data-target="theme-github">Copy "GitHub" Theme Style Tag To Clipboard</button>
+        
+        <h5 class="mt pt">Monokai</h5>
+        <iframe src="./theme-previews/monokai.html" class="-mt"></iframe>
+        <textarea id="theme-monokai" readonly class="theme-code">&lt;style>.hljs{display:block;overflow-x:auto;padding:.5em;background:#272822;color:#ddd}.hljs-tag,.hljs-keyword,.hljs-selector-tag,.hljs-literal,.hljs-strong,.hljs-name{color:#f92672}.hljs-code{color:#66d9ef}.hljs-class .hljs-title{color:white}.hljs-attribute,.hljs-symbol,.hljs-regexp,.hljs-link{color:#bf79db}.hljs-string,.hljs-bullet,.hljs-subst,.hljs-title,.hljs-section,.hljs-emphasis,.hljs-type,.hljs-built_in,.hljs-builtin-name,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-addition,.hljs-variable,.hljs-template-tag,.hljs-template-variable{color:#a6e22e}.hljs-comment,.hljs-quote,.hljs-deletion,.hljs-meta{color:#75715e}.hljs-keyword,.hljs-selector-tag,.hljs-literal,.hljs-doctag,.hljs-title,.hljs-section,.hljs-type,.hljs-selector-id{font-weight:bold}&lt;/style></textarea>
+        <button class="copy full -mt" data-target="theme-monokai">Copy "Monokai" Theme Style Tag To Clipboard</button>
+        
+        <h5 class="mt pt">Atom One Light</h5>
+        <iframe src="./theme-previews/atom-one-light.html" class="-mt"></iframe>
+        <textarea id="theme-atom-one-light" readonly class="theme-code">&lt;style>.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}.hljs-comment,.hljs-quote{color:#a0a1a7;font-style:italic}.hljs-doctag,.hljs-keyword,.hljs-formula{color:#a626a4}.hljs-section,.hljs-name,.hljs-selector-tag,.hljs-deletion,.hljs-subst{color:#e45649}.hljs-literal{color:#0184bb}.hljs-string,.hljs-regexp,.hljs-addition,.hljs-attribute,.hljs-meta-string{color:#50a14f}.hljs-built_in,.hljs-class .hljs-title{color:#c18401}.hljs-attr,.hljs-variable,.hljs-template-variable,.hljs-type,.hljs-selector-class,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-number{color:#986801}.hljs-symbol,.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-title{color:#4078f2}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}&lt;/style></textarea>
+        <button class="copy full -mt" data-target="theme-atom-one-light">Copy "Atom One Light" Theme Style Tag To Clipboard</button>
+
+        <h5 class="mt pt">Atom One Dark</h5>
+        <iframe src="./theme-previews/atom-one-dark.html" class="-mt"></iframe>
+        <textarea id="theme-atom-one-dark" readonly class="theme-code">&lt;style>.hljs{display:block;overflow-x:auto;padding:.5em;color:#abb2bf;background:#282c34}.hljs-comment,.hljs-quote{color:#5c6370;font-style:italic}.hljs-doctag,.hljs-keyword,.hljs-formula{color:#c678dd}.hljs-section,.hljs-name,.hljs-selector-tag,.hljs-deletion,.hljs-subst{color:#e06c75}.hljs-literal{color:#56b6c2}.hljs-string,.hljs-regexp,.hljs-addition,.hljs-attribute,.hljs-meta-string{color:#98c379}.hljs-built_in,.hljs-class .hljs-title{color:#e6c07b}.hljs-attr,.hljs-variable,.hljs-template-variable,.hljs-type,.hljs-selector-class,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-number{color:#d19a66}.hljs-symbol,.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-title{color:#61aeee}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}&lt;/style></textarea>
+        <button class="copy full -mt" data-target="theme-atom-one-dark">Copy "Atom One Dark" Theme Style Tag To Clipboard</button>
+    </main>
+    
   </main>
   <script>
     document.getElementById("input-form").addEventListener("submit", function(event){
@@ -74,21 +134,29 @@
       } else {
         var highlighted = hljs.highlight(language, code);
       }
-      var output = '<pre><code class="hljs ' + highlighted.language + '">' + highlighted.value + '</code></pre>';
+      var output = ('<pre><code class="hljs ' + highlighted.language + '">' + highlighted.value + '</code></pre>').replace(new RegExp("\n", "g"), "<br />");
       document.getElementById("output-code").value = output;
       document.getElementById("output-preview").innerHTML = output;
       return false;
     });
-    document.getElementById("output-copy").addEventListener("click", function(){
-      var $output = document.getElementById("output-code");
-      $output.select();
-      $output.setSelectionRange(0, 99999999);
-      document.execCommand("copy");
-      var $success = document.getElementById("output-copy-success");
-      $success.style.display = "";
-      setTimeout(function(){
-        $success.style.display = "none";
-      }, 3000);
+    Array.prototype.slice.call(document.getElementsByClassName("copy")).forEach(function($copy){
+      $copy.addEventListener("click", function(){
+        var target = $copy.getAttribute("data-target");
+        if(!target) return;
+        var $target = document.getElementById(target);
+        if(!$target) return;
+        $target.select();
+        $target.setSelectionRange(0, 99999999);
+        document.execCommand("copy");
+        var $success = document.createElement("p");
+        $success.className = "success text-white p radius text-center";
+        $success.innerHTML = "<b>Copied to Clipboard</b>";
+        $copy.parentElement.insertBefore($success, $copy.nextSibling);
+        setTimeout(function(){
+          $copy.parentElement.removeChild($success);
+        }, 3000);
+      });
+      
     });
   </script>
 </body>
