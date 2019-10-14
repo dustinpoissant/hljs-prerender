@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Highlight JS Pre-Render</title>
+  <link rel="stylesheet" href="./essential.min.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+  <style>.hljs{display:block;overflow-x:auto;padding:.5em;background:white;color:black}.hljs-comment,.hljs-quote,.hljs-variable{color:#008000}.hljs-keyword,.hljs-selector-tag,.hljs-built_in,.hljs-name,.hljs-tag{color:#00f}.hljs-string,.hljs-title,.hljs-section,.hljs-attribute,.hljs-literal,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-addition{color:#a31515}.hljs-deletion,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-meta{color:#2b91af}.hljs-doctag{color:#808080}.hljs-attr{color:#f00}.hljs-symbol,.hljs-bullet,.hljs-link{color:#00b0e8}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}</style>
+</head>
+<body>
+  <h1 class="text-center py">Highlight JS Pre-Renderer</h1>
+  <p class="text-center">Prerender Highlight JS code to avoid having to make an extra network call and extra JS execution on each page load.</p>
+  <hr />
+  <main>
+    <div class="row -mx">
+      <div class="d-col-6 t-col-6 m-col-12 px mb">
+        <h3>Input Code</h3>
+        <form id="input-form">
+          <label for="input-language">Language</label>
+          <select id="input-language">
+            <option value='auto' selected>Auto Detect</option>
+            <option value='apache'>Apache</option>
+            <option value='bash'>Bash</option>
+            <option value='coffeescript'>CoffeeScript</option>
+            <option value='cpp'>C++</option>
+            <option value='cs'>CS</option>
+            <option value='css'>CSS</option>
+            <option value='diff'>diff</option>
+            <option value='xml'>HTML</option>
+            <option value='http'>HTTP</option>
+            <option value='ini'>ini</option>
+            <option value='java'>Java</option>
+            <option value='javascript'>JavaScript</option>
+            <option value='json'>JSON</option>
+            <option value='makefile'>Makefile</option>
+            <option value='markdown'>Mark Down</option>
+            <option value='nginx'>nginx</option>
+            <option value='objectivec'>Objective C</option>
+            <option value='perl'>Perl</option>
+            <option value='php'>PHP</option>
+            <option value='properties'>Properties</option>
+            <option value='python'>Python</option>
+            <option value='ruby'>Ruby</option>
+            <option value='shell'>Shell</option>
+            <option value='sql'>SQL</option>
+            <option value='xml'>XML</option>
+            <option value='yaml'>Yaml</option>
+          </select>
+          <label for="input-code">Code to Highlight:</label>
+          <textarea id="input-code" placeholder="Enter your code here" autofocus required></textarea>
+          <button class="primary full">Render</button>
+        </form>
+      </div>
+      <div class="d-col-6 t-col-6 m-col-12 px">
+        <h3>Output Markup</h3>
+        <textarea id="output-code" readonly placeholder='Enter code in input box and click "Render" to see the output here.'></textarea>
+        <button id="output-copy" class="full">Copy to Clipboard</button>
+        <p id="output-copy-success" class="success text-ligh p radius" style="display: none">Copied to Clipboard</p>
+        <h3>Preview</h3>
+        <div id="output-preview"></div>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.getElementById("input-form").addEventListener("submit", function(event){
+      event.preventDefault();
+      var language = document.getElementById("input-language").value;
+      var code = document.getElementById("input-code").value;
+      if(!language || !code) return false;
+      if(language == "auto"){
+        var highlighted = hljs.highlightAuto(code);
+      } else {
+        var highlighted = hljs.highlight(language, code);
+      }
+      var output = '<pre><code class="hljs ' + highlighted.language + '">' + highlighted.value + '</code></pre>';
+      document.getElementById("output-code").value = output;
+      document.getElementById("output-preview").innerHTML = output;
+      return false;
+    });
+    document.getElementById("output-copy").addEventListener("click", function(){
+      var $output = document.getElementById("output-code");
+      $output.select();
+      $output.setSelectionRange(0, 99999999);
+      document.execCommand("copy");
+      var $success = document.getElementById("output-copy-success");
+      $success.style.display = "";
+      setTimeout(function(){
+        $success.style.display = "none";
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
