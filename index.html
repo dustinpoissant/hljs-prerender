@@ -33,10 +33,9 @@
   <p class="text-center">Prerender Highlight JS code to avoid having to make an extra network call and extra JS execution on each page load.</p>
   <hr />
   <main>
-    <div class="row -mx">
-      <div class="d-col-6 t-col-6 m-col-12 px mb">
+
         <h3>Input Code</h3>
-        <form id="input-form">
+        <form id="input-form" class="mb">
           <label for="input-language">Language</label>
           <select id="input-language">
             <option value='auto' selected>Auto Detect</option>
@@ -68,18 +67,16 @@
             <option value='yaml'>Yaml</option>
           </select>
           <label for="input-code">Code to Highlight:</label>
-          <textarea id="input-code" placeholder="Enter your code here" autofocus required></textarea>
+          <textarea id="input-code" placeholder="Enter your code here" autofocus required style="height: calc(75vh - 30rem)"></textarea>
           <button class="primary full">Render</button>
         </form>
-      </div>
-      <div class="d-col-6 t-col-6 m-col-12 px mb">
+
+
         <h3>Output Markup</h3>
         <textarea id="output-code" readonly placeholder='Enter code in input box and click "Render" to see the output here.'></textarea>
         <button class="copy full -mt" data-target="output-code">Copy Output To Clipboard</button>
         <h3>Preview</h3>
         <div id="output-preview"></div>
-      </div>
-    </div>
 
     <hr />
     
